@@ -1,0 +1,122 @@
+
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #f5f0e6;
+    color: #4e3629;
+    margin: 0;
+    padding: 20px;
+}
+
+.main-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.small-header {
+    font-size: 1.2rem;
+    color: #a67c52;
+    letter-spacing: 2px;
+}
+
+.large-header {
+    font-size: 2rem;
+    color: #804c36;
+    margin-top: 10px;
+}
+
+.content-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+}
+
+.habits-section {
+    flex: 1;
+}
+
+.habit-block {
+    background: #fffaf4;
+    border: 1px solid #e3cbb8;
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+}
+
+.week-grid {
+    display: flex;
+    gap: 5px;
+    margin-top: 5px;
+}
+
+.week-day input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+}
+
+.visuals-section {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+}
+
+.affirmation {
+    font-size: 1.2rem;
+    font-style: italic;
+    color: #a56b4d;
+    background-color: #fff8f1;
+    padding: 15px;
+    border-radius: 6px;
+    text-align: center;
+    box-shadow: 0 0 5px rgba(165, 107, 77, 0.1);
+}
+
+.graph-container img {
+    max-width: 100%;
+    border-radius: 6px;
+    box-shadow: 0 0 8px rgba(120, 80, 60, 0.1);
+}
+
+button {
+    background-color: #a67c52;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #925e3a;
+}
+
+input[type="text"] {
+    padding: 6px;
+    border: 1px solid #d5bba5;
+    border-radius: 6px;
+    margin-bottom: 8px;
+}
+
+.week-day {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 0.8rem;
+    color: #6f4e37;
+}
+
+.habits-section, .visuals-section {
+    min-width: 300px;
+}
+
+
+
+
+
+
+
+
+

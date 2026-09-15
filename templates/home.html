@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Habit Tracker</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}?v=2.0">
+</head>
+
+<body>
+    <!-- Main Headers -->
+    <header class="main-header">
+        <h3 class="small-header">WELLNESS & HABIT TRACKER</h3>
+        <h1 class="large-header">WELCOME TO YOUR DAILY HABIT TRACKER</h1>
+    </header>
+
+    <div class="content-wrapper">
+        <!-- Habits & Controls -->
+        <section class="habits-section">
+            <!-- Add new habit -->
+            <form method="POST" action="/" class="add-form">
+                <input type="text" name="title" placeholder="New habit name">
+                <button type="submit">➕ Add Habit</button>
+            </form>
+
+            <hr>
+
+            <!--- Habit Blocks -->
+            {% for habit in habits %}
+            <div class="habit-block">
+                <h2>{{ habit.title }}</h2>
+
+                <form action="/complete/{{ habit.id }}" method="POST">
+                    <button type="submit"> Mark Completed Today</button>
+                </form>
+
+                <div class="week-grid">
+                    {% for day in ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'] %}
+                        <label class="week-day">
+                            <input type="checkbox" disabled {% if habit_week_data[habit.id][day] %}checked{% endif %}>
+                            {{ day[0] }}
+                        </label>
+                    {% endfor %}
+                </div>
+
+                <form method="POST" action="/update">
+                    <input type="hidden" name="oldtitle" value="{{ habit.title }}">
+                    <input type="text" name="newtitle" placeholder="Rename habit">
+                    <button type="submit">️Update</button>
+                </form>
+
+                <form method="POST" action="/delete">
+                    <input type="hidden" name="title" value="{{ habit.title }}">
+                    <button type="submit">️Delete</button>
+                </form>
+
+                <hr>
+            </div>
+            {% endfor %}
+        </section>
+
+        <!--  Affirmation & Graphs -->
+        <aside class="visuals-section">
+            <p class="affirmation">I am proud of the positive changes I am making through my habits.</p>
+
+            {% for habit in habits %}
+            {% if habit_graphs[habit.id] %}
+                <div class="graph-container">
+                    <h3>{{ habit.title }} Progress</h3>
+                    <img src="{{ url_for('static', filename=habit_graphs[habit.id]) }}" alt="Graph for {{ habit.title }}">
+                </div>
+            {% endif %}
+            {% endfor %}
+        </aside>
+    </div>
+
+</body>
+
+</html>
